@@ -1,0 +1,33 @@
+{
+    "manifest_version": 2,
+
+    "name": "RMN Coupon Wizard",
+    "description": "This extension enables the RMN Coupon Wizard on RetailMeNot pages",
+    "version": "1.0",
+
+    "content_scripts": [
+        {
+            "matches": ["http://www.retailmenot.local/*"],
+            "js": ["jquery-2.1.1.min.js","demohelper.js"]
+        },
+        {
+            "matches": ["http://www.retailmenot.com/view/forever21.com", "*://www.forever21.com/*"],
+            "js": ["jquery-2.1.1.min.js","jquery.cookie.js", "rmnwiz.js"],
+            "run_at" : "document_end"
+        }
+
+    ],
+
+    "permissions": [
+        "tabs",
+        "background",
+        "browsingData",
+        "cookies",
+        "*://*.retailmenot.com/",
+        "https://www.forever21.com/"
+    ],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": true
+    }
+}
